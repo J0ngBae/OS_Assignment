@@ -1,7 +1,6 @@
 #ifndef __MODULE1__
 #define __MODULE1__
 
-#include <stdio.h>
 #include "util.h"
 
 #define LOAD_N 0x0

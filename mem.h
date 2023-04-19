@@ -1,14 +1,6 @@
 #ifndef __MEM__
 #define __MEM__
 
-#ifndef __linux__
-#define _CRT_SECURE_NO_WARNINGS
-#endif
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
 #define STACK_MAX 100
 #define MEM_SIZE 0x10
 
@@ -20,8 +12,13 @@ int data_register;
 void stack_init();
 void stack_push(int data);
 int stack_pop();
+void stack_add(int value);
+void stack_sub(int value);
 
 
+/*********************************************************
+ *  variable define of module2 is managed by Linked List *
+ **********************************************************/
 typedef struct Compile_Mem{
     char var[5];
     char addr[5];

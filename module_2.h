@@ -1,10 +1,6 @@
 #ifndef __MODULE2__
 #define __MODULE2__
 
-#ifndef __linux__
-#define _CRT_SECURE_NO_WARNINGS
-#endif
-
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>

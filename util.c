@@ -1,3 +1,11 @@
+#ifndef __linux__
+#define _CRT_SECURE_NO_WARNINGS
+#endif
+
+#include <stdlib.h>
+#include <string.h>
+#include <stdint.h>
+#include <stdio.h>
 #include "util.h"
 
 int pre_processing(char* buf, char* dst){
@@ -17,7 +25,7 @@ int pre_processing(char* buf, char* dst){
     return (int)((len - cnt) / 4);
 }
 
-int to_bin4(int** binary, char* inst, int len){
+int bintoi(int** binary, char* inst, int len){
     for(int i = 0; i < len; i++){
         (*binary)[i] = ((int)(inst[i * 4] - 0x30) << 3) | ((int)(inst[(i * 4 + 1)] - 0x30) << 2) | ((int)(inst[(i * 4) + 2] - 0x30) << 1) | ((int)(inst[(i * 4) + 3] - 0x30));
     }

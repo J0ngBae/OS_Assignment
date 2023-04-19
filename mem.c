@@ -1,3 +1,10 @@
+#ifndef __linux__
+#define _CRT_SECURE_NO_WARNINGS
+#endif
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include "mem.h"
 
 
@@ -26,12 +33,20 @@ int stack_pop(){
     return stack_memory[stack_pointer--];
 }
 
+void stack_add(int value){
+    stack_memory[stack_pointer] += value;
+}
+
+void stack_sub(int value){
+    stack_memory[stack_pointer] -= value;
+}
+
 /*** Stack Memory Util End ***/
 
 /*** Memory Linked List Util Start ***/
 
 /**
- * @brief Memory에서 "var"에 해당하는 변수가 있는 구조체 반환
+ * @brief Find the CMem object that corresponds to the variable
  * 
  * @param var 
  * @return CMem* 
@@ -48,7 +63,7 @@ CMem* search(char* var){
 }
 
 /**
- * @brief 모든 Memory Linked List 출력
+ * @brief Find All CMem object
  * 
  */
 void search_all(){
@@ -61,7 +76,7 @@ void search_all(){
 }
 
 /**
- * @brief 현재 Memory Linked List의 개수 반환
+ * @brief Current Linked List Size return
  * 
  * @return int 
  */

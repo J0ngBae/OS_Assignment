@@ -27,12 +27,16 @@ int main(int argc, char* argv[]){
 
 void compile_module(char* filename, char* objfile){
     FILE *fd = NULL;
-    char buf[0x100] = { NULL };
-    char result[MAX_STRING] = { NULL };
+    char buf[0x100] = { "\0" };
+    char result[MAX_STRING] = { "\0" };
     char* ptr = NULL;
     int line = 1;
     
     fd = fopen(filename, "r");
+    if(fd == NULL){
+        printf("File Open Error...\n");
+        exit(0);
+    }
 
     while(fgets(buf, 0x100, fd) != NULL){
         compile(buf, result, filename, line);
@@ -44,6 +48,11 @@ void compile_module(char* filename, char* objfile){
     fclose(fd);
 
     fd = fopen(objfile, "w");
+    if(fd == NULL){
+        printf("File Open Error...\n");
+        exit(0);
+    }
+
     fwrite(result, sizeof(char), MAX_STRING, fd);
     fclose(fd);
 
@@ -58,7 +67,7 @@ void exec_module(char* filename){
     int* binary = NULL;
 
     if(fd == NULL){
-        printf("fail....");
+        printf("File Open Error...\n");
         exit(0);
     }
 

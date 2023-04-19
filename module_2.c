@@ -1,3 +1,7 @@
+#ifndef __linux__
+#define _CRT_SECURE_NO_WARNINGS
+#endif
+
 #include "module_2.h"
 #include "mem.h"
 #include "util.h"
@@ -12,7 +16,6 @@ void validation_compile(char* data, char* del, int param_num, char* filename, in
         exit(0);
     }
     strncpy(ptr, data, len);
-    //ptr[len - 1] = '\0';// ¹Ù²ïºÎºÐ
 
     ptr = strtok(ptr, del);
     while(ptr != NULL){
