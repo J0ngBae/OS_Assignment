@@ -3,11 +3,11 @@
 #include "module_1.h"
 #include "mem.h"
 
-int load_num(int num){
+void load_num(int num){
     data_register = num;
 }
 
-int load_addr_value(int addr){
+void load_addr_value(int addr){
     data_register = mem[addr];
 }
 
@@ -23,7 +23,7 @@ void push(){
     stack_push(data_register);
 }
 
-int pop(){
+void pop(){
     data_register = stack_pop();
 }
 

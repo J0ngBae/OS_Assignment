@@ -15,12 +15,12 @@
 #define WRITE  0x8
 #define PRINT  0x9
 
-int load_num(int num);
-int load_addr_value(int addr);
+void load_num(int num);
+void load_addr_value(int addr);
 void store(int addr);
 void push_num(int num);
 void push();
-int pop();
+void pop();
 void add();
 void sub();
 void write(int addr);
