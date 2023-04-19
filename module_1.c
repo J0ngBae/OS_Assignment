@@ -62,11 +62,11 @@ void write(int addr){
 void print(int addr){
     char result[4];
     itobin(mem[addr], result);
-    printf("ê²°ê³¼ : %d, %s\n", mem[addr], result);
+    printf("°á°ú : %d, %s\n", mem[addr], result);
 }
 
 void instruction_exec(char* buf){
-    char dst[MAX_STRING] = {};
+    char dst[MAX_STRING] = {'\0'};
     int line, idx = 0;
     int len = pre_processing(buf, dst);
     int* binary = (int*)malloc(len * sizeof(int));

@@ -1,6 +1,10 @@
 #ifndef __MODULE2__
 #define __MODULE2__
 
+#ifndef __linux__
+#define _CRT_SECURE_NO_WARNINGS
+#endif
+
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -29,16 +33,6 @@ void inst_add(char* res);
 void inst_sub(char* res);
 void inst_write(char* addr, char* res);
 void inst_print(char* var, char* res);
-
-#define INIT(addr,line) \
-    for(int i = 0; i < (line); i++){ \
-        (addr)[i] = malloc((4)); \
-    }
-
-#define VAR_MEM_CMP(var, mem) \
-    if((var) == ('A')) strcpy((mem), ("0111")); \
-    else if((var) == ('B')) strcpy((mem), ("0100")); \
-    else if((var) == ('C')) strcpy((mem), ("0001"));
 
 #define LOAD_DATA(param, res) \
     if(is_num(param)) inst_load_num((param), (res)); \

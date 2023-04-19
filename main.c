@@ -1,3 +1,7 @@
+#ifndef __linux__
+#define _CRT_SECURE_NO_WARNINGS
+#endif
+
 #include <stdio.h>
 #include <fcntl.h>
 #include <stdlib.h>
@@ -23,8 +27,8 @@ int main(int argc, char* argv[]){
 
 void compile_module(char* filename, char* objfile){
     FILE *fd = NULL;
-    char buf[0x100] = "";
-    char result[MAX_STRING] = "";
+    char buf[0x100] = { NULL };
+    char result[MAX_STRING] = { NULL };
     char* ptr = NULL;
     int line = 1;
     
@@ -55,8 +59,11 @@ void exec_module(char* filename){
 
     if(fd == NULL){
         printf("fail....");
+        exit(0);
     }
 
     fread(buf, sizeof(char), MAX_STRING, fd);
     instruction_exec(buf);
+
+    fclose(fd);
 }

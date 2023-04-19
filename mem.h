@@ -1,7 +1,13 @@
 #ifndef __MEM__
 #define __MEM__
 
+#ifndef __linux__
+#define _CRT_SECURE_NO_WARNINGS
+#endif
+
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 #define STACK_MAX 100
 #define MEM_SIZE 0x10

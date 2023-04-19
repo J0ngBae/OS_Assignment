@@ -7,7 +7,12 @@ void validation_compile(char* data, char* del, int param_num, char* filename, in
     int len = strlen(data);
     char* ptr = (char*)calloc(len, sizeof(char));
 
+    if (ptr == NULL) {
+        printf("Memory Allocation Error...\n");
+        exit(0);
+    }
     strncpy(ptr, data, len);
+    //ptr[len - 1] = '\0';// ¹Ù²ïºÎºÐ
 
     ptr = strtok(ptr, del);
     while(ptr != NULL){
@@ -29,7 +34,7 @@ void validation_compile(char* data, char* del, int param_num, char* filename, in
 
 void hl_write(char* data, char* res, char* filename, int line){
     char* ptr;
-    struct Argument_3 write_struct = {};
+    struct Argument_3 write_struct = {"\0", "\0", "\0"};
 
     str_strip(data, '\n');
     validation_compile(data, ", ", 3, filename, line, HL_WRITE);
@@ -38,10 +43,10 @@ void hl_write(char* data, char* res, char* filename, int line){
     strcpy(write_struct.var, ptr);
 
     ptr = strtok(NULL, ", ");
-    strncpy(write_struct.mem_addr, ptr, 4);
+    strncpy(write_struct.mem_addr, ptr, 5);
 
     ptr = strtok(NULL, ", ");
-    strncpy(write_struct.value, ptr, 4);
+    strncpy(write_struct.value, ptr, 5);
 
     insert(write_struct.var, write_struct.mem_addr, write_struct.value);
 
@@ -54,7 +59,7 @@ void hl_write(char* data, char* res, char* filename, int line){
 void hl_store(char* data, char* res, char* filename, int line){
     char* ptr = NULL;
     int len = 0;
-    struct Argument_1 store_struct = {};
+    struct Argument_1 store_struct = { "\0" };
 
     str_strip(data, '\n');
     validation_compile(data, ", ", 1, filename, line, HL_STORE);
@@ -67,7 +72,7 @@ void hl_store(char* data, char* res, char* filename, int line){
 
 void hl_print(char* data, char* res, char* filename, int line){
     char* ptr = NULL;
-    struct Argument_1 print_struct = {};
+    struct Argument_1 print_struct = { "\0" };
 
     str_strip(data, '\n');
     validation_compile(data, ", ", 1, filename, line, HL_PRINT);
@@ -78,7 +83,7 @@ void hl_print(char* data, char* res, char* filename, int line){
 
 void hl_add(char* data, char* res, char* filename, int line){
     char* ptr = NULL;
-    struct Argument_2 add_struct = {};
+    struct Argument_2 add_struct = { "\0", "\0" };
     int len = 0;
 
     str_strip(data, '\n');
@@ -104,7 +109,7 @@ void hl_add(char* data, char* res, char* filename, int line){
 void hl_sub(char* data, char* res, char* filename, int line){
     char* ptr = NULL;
     int len = 0;
-    struct Argument_2 sub_struct = {};
+    struct Argument_2 sub_struct = { "\0", "\0" };
 
     str_strip(data, '\n');
     validation_compile(data, ", ", 2, filename, line, HL_SUB);
@@ -249,7 +254,7 @@ void inst_write(char* addr, char* res){
  * @param res 
  */
 void inst_print(char* var, char* res){
-    char mem[5] = {};
+    char mem[5] = {'\0'};
     CMem* memory = NULL;
 
     memory = search(var);

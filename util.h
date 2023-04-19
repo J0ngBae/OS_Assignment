@@ -1,6 +1,10 @@
 #ifndef __UTIL__
 #define __UTIL__
 
+#ifndef __linux__
+#define _CRT_SECURE_NO_WARNINGS
+#endif
+
 #include <stdlib.h>
 #include <string.h>
 #include <stdint.h>

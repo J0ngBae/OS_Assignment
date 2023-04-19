@@ -1,6 +1,5 @@
-#include <stdlib.h>
-#include <string.h>
 #include "mem.h"
+
 
 #define IS_MEM_EMPTY() ((head) == (NULL)) ? (0) : (1)
 
@@ -14,6 +13,7 @@ void stack_init(){
 void stack_push(int data){
     if(stack_pointer >= STACK_MAX - 1){
         printf("stack overflow...");
+        exit(0);
     }
     stack_memory[++stack_pointer] = data;
 }
@@ -21,6 +21,7 @@ void stack_push(int data){
 int stack_pop(){
     if(stack_pointer < 0){
         printf("stack underflow");
+        exit(0);
     }
     return stack_memory[stack_pointer--];
 }
@@ -30,7 +31,7 @@ int stack_pop(){
 /*** Memory Linked List Util Start ***/
 
 /**
- * @brief Memoryì—ì„œ "var"ì— í•´ë‹¹í•˜ëŠ” ë³€ìˆ˜ê°€ ìžˆëŠ” êµ¬ì¡°ì²´ ë°˜í™˜
+ * @brief Memory¿¡¼­ "var"¿¡ ÇØ´çÇÏ´Â º¯¼ö°¡ ÀÖ´Â ±¸Á¶Ã¼ ¹ÝÈ¯
  * 
  * @param var 
  * @return CMem* 
@@ -47,7 +48,7 @@ CMem* search(char* var){
 }
 
 /**
- * @brief ëª¨ë“  Memory Linked List ì¶œë ¥
+ * @brief ¸ðµç Memory Linked List Ãâ·Â
  * 
  */
 void search_all(){
@@ -60,7 +61,7 @@ void search_all(){
 }
 
 /**
- * @brief í˜„ìž¬ Memory Linked Listì˜ ê°œìˆ˜ ë°˜í™˜
+ * @brief ÇöÀç Memory Linked ListÀÇ °³¼ö ¹ÝÈ¯
  * 
  * @return int 
  */
@@ -79,12 +80,17 @@ void insert_next(CMem* before, CMem* node){
 }
 
 void insert(char* var, char* addr, char* value){
-    CMem* new_node, *prev;
+    CMem* new_node;
     
     new_node = (CMem*)malloc(sizeof(CMem*));
-    strncpy(new_node->var, var, 4);
-    strncpy(new_node->addr, addr, 4);
-    strncpy(new_node->value, value, 4);
+    if (new_node == NULL) {
+        printf("Memory Allocation Error...\n");
+        free(new_node);
+        exit(0);
+    }
+    strncpy(new_node->var, var, 5);
+    strncpy(new_node->addr, addr, 5);
+    strncpy(new_node->value, value, 5);
 
     new_node->mem = head;
     head = new_node;
