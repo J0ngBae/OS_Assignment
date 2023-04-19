@@ -8,6 +8,8 @@
 #include <stdio.h>
 #include "util.h"
 
+#define MACHINE_BYTE 5
+
 int pre_processing(char* buf, char* dst){
     int len = 0;
     int cnt = 0;
@@ -38,7 +40,7 @@ void itobin(int value, char* res){
         res[i] = (char)((value & 0x1) + 0x30);
         value >>= 1;
     }
-    res[sizeof(res) - 1] = '\0';
+    res[MACHINE_BYTE - 1] = '\0';
 }
 
 int is_num(char* data){

@@ -3,6 +3,7 @@
 
 #define STACK_MAX 100
 #define MEM_SIZE 0x10
+#define MACHINE_BYTE 5
 
 int stack_memory[STACK_MAX];
 int stack_pointer;
@@ -20,9 +21,9 @@ void stack_sub(int value);
  *  variable define of module2 is managed by Linked List *
  **********************************************************/
 typedef struct Compile_Mem{
-    char var[5];
-    char addr[5];
-    char value[5];
+    char var[MACHINE_BYTE];
+    char addr[MACHINE_BYTE];
+    char value[MACHINE_BYTE];
     struct Compile_Mem* mem;
 }CMem;
 

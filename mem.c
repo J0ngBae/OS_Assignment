@@ -103,9 +103,9 @@ void insert(char* var, char* addr, char* value){
         free(new_node);
         exit(0);
     }
-    strncpy(new_node->var, var, 5);
-    strncpy(new_node->addr, addr, 5);
-    strncpy(new_node->value, value, 5);
+    strncpy(new_node->var, var, MACHINE_BYTE);
+    strncpy(new_node->addr, addr, MACHINE_BYTE);
+    strncpy(new_node->value, value, MACHINE_BYTE);
 
     new_node->mem = head;
     head = new_node;
