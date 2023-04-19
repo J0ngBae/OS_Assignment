@@ -64,7 +64,6 @@ void exec_module(char* filename){
     char buf[MAX_STRING] = "";
     
     char* ptr = NULL;
-    int* binary = NULL;
 
     if(fd == NULL){
         printf("File Open Error...\n");
