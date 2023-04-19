@@ -40,7 +40,7 @@ void write(int addr){
 }
 
 void print(int addr){
-    char result[4];
+    char result[5];
     itobin(mem[addr], result);
     printf("result : %d, %s\n", mem[addr], result);
 }

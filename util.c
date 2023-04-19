@@ -38,6 +38,7 @@ void itobin(int value, char* res){
         res[i] = (char)((value & 0x1) + 0x30);
         value >>= 1;
     }
+    res[sizeof(res) - 1] = '\0';
 }
 
 int is_num(char* data){
