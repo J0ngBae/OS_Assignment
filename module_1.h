@@ -2,6 +2,7 @@
 #define __MODULE1__
 
 #include "util.h"
+#include "mem.h"
 
 #define LOAD_N 0x0
 #define LOAD_A 0x1
@@ -25,8 +26,6 @@ void add();
 void sub();
 void write(int addr);
 void print(int addr);
-void stack_add(int value);
-void stack_sub(int value);
 void check();
 void instruction_exec(char* buf);
 

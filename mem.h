@@ -5,10 +5,6 @@
 #define MEM_SIZE 0x10
 #define MACHINE_BYTE 5
 
-int stack_memory[STACK_MAX];
-int stack_pointer;
-int mem[MEM_SIZE];
-int data_register;
 
 void stack_init();
 void stack_push(int data);

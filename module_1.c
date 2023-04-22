@@ -1,7 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "module_1.h"
-#include "mem.h"
+
+extern int stack_memory[STACK_MAX];
+extern int stack_pointer;
+extern int mem[MEM_SIZE];
+extern int data_register;
 
 void load_num(int num){
     data_register = num;

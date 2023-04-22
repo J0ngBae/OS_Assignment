@@ -9,7 +9,7 @@
 #include "util.h"
 #include "module_1.h"
 #include "module_2.h"
-#include "mem.h"
+//#include "mem.h"
 
 void exec_module(char* filename);
 void compile_module(char* filename, char* objfile);

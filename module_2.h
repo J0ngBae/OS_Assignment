@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include "mem.h"
+//#include "mem.h"
 
 #define HL_WRITE "WRITE"
 #define HL_STORE "STORE"
@@ -19,7 +19,7 @@ void hl_add(char* data, char* res, char* filename, int line);
 void hl_sub(char* data, char* res, char* filename, int line);
 
 void compile(char* buf, char* res, char* filename, int line);
-void inst_load_num(char* value, char* res);
+void inst_load_num(int value, char* res);
 void inst_load_addr(char* var, char* res);
 void inst_store(char* var, char* res);
 void inst_push_n(char* value, char* res);
@@ -31,7 +31,7 @@ void inst_write(char* addr, char* res);
 void inst_print(char* var, char* res);
 
 #define LOAD_DATA(param, res) \
-    if(is_num(param)) inst_load_num((param), (res)); \
+    if(is_num(param)) inst_load_num((is_num(param)), (res)); \
     else{CMem* mem = NULL; mem = search(param); inst_load_addr((mem->addr), (res));}
 
 struct Argument_3{

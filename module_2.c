@@ -143,9 +143,12 @@ void hl_sub(char* data, char* res, char* filename, int line){
  * @param value 
  * @param res 
  */
-void inst_load_num(char* value, char* res){
+void inst_load_num(int value, char* res){
+    char tmp[5] = "";
+    itobin(value, tmp);
+    
     strcat(res, "0000 ");
-    strcat(res, value);
+    strcat(res, tmp);
     strcat(res, "\n");
 }
 

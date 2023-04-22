@@ -7,10 +7,14 @@
 #include <string.h>
 #include "mem.h"
 
-
 #define IS_MEM_EMPTY() ((head) == (NULL)) ? (0) : (1)
 
 CMem* head = NULL;
+int stack_memory[STACK_MAX];
+int stack_pointer;
+int mem[MEM_SIZE];
+int data_register;
+
 
 /*** Stack Memory Util Start ***/
 void stack_init(){

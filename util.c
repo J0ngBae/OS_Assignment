@@ -44,8 +44,9 @@ void itobin(int value, char* res){
 }
 
 int is_num(char* data){
-    if(*data == '0' || *data == '1'){
-        return 1;
+    int tmp = atoi(data);
+    if(tmp || *data == '0'){
+        return tmp;
     }else{
         return 0;
     }
