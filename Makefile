@@ -20,4 +20,4 @@ mem.o : mem.c
 
 clean :
 	rm $(OBJS)
-	rm -rf ./bin/$(TARGET)
+	rm -rf ./bin/*
