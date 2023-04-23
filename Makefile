@@ -6,6 +6,7 @@ all : $(TARGET)
 
 $(TARGET) : main.o module_1.o module_2.o util.o mem.o
 	mkdir bin
+	cp -r ./testcase ./bin
 	$(CC) -o ./bin/$(TARGET) $(OBJS)
 main.o : main.c mem.o
 	$(CC) -c main.c
@@ -21,3 +22,4 @@ mem.o : mem.c
 clean :
 	rm $(OBJS)
 	rm -rf ./bin/*
+	rmdir ./bin

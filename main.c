@@ -20,6 +20,18 @@ int main(int argc, char* argv[]){
         printf("[+] Usage ./main <file.pl> <file.bi>\n");
         exit(0);
     }
+
+    if(!strstr(argv[1], ".pl")){
+        printf("[+] Incorret File Extension %s\n", argv[1]);
+        printf("[+] Please change File Extension to \'*.pl\'\n");
+        exit(0);
+    }
+
+    if(!strstr(argv[2], ".bi")){
+        printf("[+] Incorret File Extension \'%s\'\n", argv[2]);
+        printf("[+] Please change File Extension to \'*.bi\'\n");
+        exit(0);
+    }
     compile_module(argv[1], argv[2]);
     exec_module(argv[2]);
 

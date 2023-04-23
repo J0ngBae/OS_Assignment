@@ -46,7 +46,7 @@ void write(int addr){
 void print(int addr){
     char result[MACHINE_BYTE];
     itobin(mem[addr], result);
-    printf("result : %d, %s\n", mem[addr], result);
+    printf("-> %s [%d] \n", result, mem[addr]);
 }
 
 void instruction_exec(char* buf){
